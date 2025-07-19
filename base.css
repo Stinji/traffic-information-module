@@ -1,0 +1,58 @@
+/* ========== RESET ========== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== GLOBAL STYLES ========== */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F4F6F8;
+  color: #1F1F1F;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, button {
+    font-weight: 700;
+}
+
+h2, p, li {
+    font-weight: 500;
+}
+
+/* ========== MEDIA / IMAGES ========== */
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========== FORMS ========== */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* ========== LINKS ========== */
+a {
+  color: inherit;
+  text-decoration: none;
+}

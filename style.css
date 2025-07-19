@@ -1,0 +1,65 @@
+body {
+  width: 40%;
+  margin: auto;
+}
+
+main {
+  margin: 50px 0px;
+}
+
+.logo {
+  padding: 50px 0px;
+}
+
+.title {
+  padding: 25px 0px;
+  text-align: center;
+}
+
+.objective {
+  background: #FFF;
+  padding: 25px 35px;
+  border-radius: 15px;
+}
+
+h2 {
+  padding: 10px 0px;
+}
+
+.example {
+  font-weight: 300;
+  text-align: center;
+  padding: 25px 0px;
+}
+
+ol {
+  list-style: none;
+  counter-reset: my-counter;
+}
+
+li {
+  counter-increment: my-counter;
+  margin: 0.25rem;
+}
+
+li::before {
+  content: counter(my-counter);
+  background: #1F1F1F;
+  color: #FFF;
+  width: 1.4rem;
+  height: 2rem;
+  border-radius: 25%;
+  display: inline-block;
+  line-height: 2rem;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+button {
+  margin: 25px 0px;
+  padding: 20px 0px;
+  background: #1F1F1F;
+  color: #FFF;
+  width: 100%;
+  border-radius: 15px;
+}
