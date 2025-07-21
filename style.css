@@ -15,9 +15,7 @@ body {
 }
 
 h1 {
-  font-size: clamp(0.832rem, 5.333vw, 3.155rem);
-  text-align: center;
-  white-space: nowrap;
+  font-size: clamp(0.832rem, 5.333vw, 3.05rem);
 }
 
 h2 {
@@ -25,7 +23,9 @@ h2 {
   font-weight: 500;
 }
 
-p, li, button {
+p,
+li,
+button {
   font-size: clamp(0.586rem, 3.733vw, 1.55rem);
 }
 
@@ -40,7 +40,7 @@ p,
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 16px 4.267vw;
+  padding: 16px clamp(10px, 2.667vw, 25px);
   min-width: 250px;
   overflow: hidden;
 }
@@ -53,41 +53,63 @@ p,
   width: clamp(180px, 86.667%, 750px);
   min-width: 120px;
   display: block;
+  padding-top: clamp(25px, 10vw, 100px);
   margin: 0 auto;
+  margin-bottom: clamp(17px, 6.667vw, 25px);
+}
+
+.title {
+  text-align: center;
+  white-space: nowrap;
+  padding: clamp(12px, 5vw, 50px) 0;
 }
 
 .explanation-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2.667vw, 15px);
   background-color: #fff;
   border-radius: 10px;
   padding: 25px;
   width: clamp(220px, 100%, 866px);
+  min-width: 220px;
   margin: 0 auto;
 }
 
 .standard-format {
   font-weight: 300;
+  padding: 25px;
+  text-align: center;
 }
 
 .all-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 0;
 }
 
 .individual-steps {
   list-style: none;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .marker {
+  background-color: #1f1f1f;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
+  width: clamp(16px, 4.267vw, 28.34px);
+  height: clamp(21px, 5.6vw, 37.2px);
+  border-radius: 5px;
 }
 
 .step-text {
   flex: 1;
-  padding-left: 10px;
+  padding-left: clamp(10px, 2.667vw, 25px);
 }
 
 .btn {
@@ -95,6 +117,7 @@ p,
   color: #fff;
   cursor: pointer;
   width: clamp(220px, 100%, 866px);
-  margin: 0 auto;
+  margin: 10px auto;
   border-radius: 10px;
+  height: clamp(27px, 10.667vw, 75px);
 }
