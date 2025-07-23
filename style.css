@@ -1,3 +1,9 @@
+/* 
+To Do
+  Set up media queries for screen responsiveness
+  Use the flex property in start-screen in order to scale vertically
+*/
+
 * {
   box-sizing: border-box;
 }
@@ -6,7 +12,7 @@ html,
 body {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 body {
@@ -29,6 +35,16 @@ button {
   font-size: clamp(0.586rem, 3.733vw, 1.55rem);
 }
 
+button {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  transition-timing-function: cubic-bezier(0.44, 0, 0.56, 1);
+}
+
+button:hover {
+  background-color: #003B73;
+}
+
 h1,
 h2,
 p,
@@ -36,13 +52,13 @@ p,
   margin: 0;
 }
 
+/* Start Screen */
 .start-screen {
   display: flex;
   flex-direction: column;
   height: 100vh;
   padding: 16px clamp(10px, 2.667vw, 25px);
   min-width: 250px;
-  overflow: hidden;
 }
 
 .section {
@@ -53,7 +69,7 @@ p,
   width: clamp(180px, 86.667%, 750px);
   min-width: 120px;
   display: block;
-  padding-top: clamp(25px, 10vw, 100px);
+  padding-top: clamp(15px, 6vw, 100px);
   margin: 0 auto;
   margin-bottom: clamp(17px, 6.667vw, 25px);
 }
@@ -61,7 +77,11 @@ p,
 .title {
   text-align: center;
   white-space: nowrap;
-  padding: clamp(12px, 5vw, 50px) 0;
+  padding: clamp(12px, 8vw, 50px) 0;
+}
+
+.spacer {
+  flex: 1;
 }
 
 .explanation-container {
@@ -74,6 +94,7 @@ p,
   width: clamp(220px, 100%, 866px);
   min-width: 220px;
   margin: 0 auto;
+  justify-content: center;
 }
 
 .standard-format {
@@ -115,9 +136,100 @@ p,
 .btn {
   background-color: #1f1f1f;
   color: #fff;
-  cursor: pointer;
   width: clamp(220px, 100%, 866px);
   margin: 10px auto;
   border-radius: 10px;
   height: clamp(27px, 10.667vw, 75px);
+}
+
+/* Exercise Screen */
+
+.exercise-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-width: 250px;
+  gap: 10px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: white;
+  flex: 1;
+  padding: 0 15px;
+}
+
+.top > h1 {
+  padding-bottom: 8px;
+  font-size: clamp(0.832rem, 6.4vw, 3.05rem);
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 0;
+}
+
+.left-right {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pr-bar {
+  height: 5px;
+  background-color: #E0E0E0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.radar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 3.5;
+  padding: 10px;
+}
+
+.objective {
+  background-color: white;
+  border-radius: 10px;
+  flex: 0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.radar-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 5;
+  padding: clamp(10px, 5vw, 50px) 0;
+}
+
+.answer, .next-scenario {
+  width: clamp(220px, 100%, 866px);
+  border-radius: 10px;
+  flex: 0.6;
+  min-height: 27px;
+}
+
+.answer {
+  background-color: #1F1F1F;
+  color: white;
+}
+
+.next-scenario {
+  background-color: white;
+  border: 2px solid #1F1F1F ;
+}
+
+.hidden {
+  display: none;
 }
