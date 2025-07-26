@@ -1,0 +1,95 @@
+const vfrList = [
+    { name: "Piper P28 Cherokee", type: "P28A", wtc: "L", speed: { min: 80, max: 110 } },
+    { name: "Cessna 172 Skyhawk", type: "C172", wtc: "L", speed: { min: 90, max: 120 } },
+    { name: "Diamond Twin Star", type: "DA42", wtc: "L", speed: { min: 140, max: 170 } },
+    { name: "Piper PA31", type: "PA31", wtc: "L", speed: { min: 120, max: 200 } },
+    { name: "Cessna 208 Grand Caravan", type: "C208", wtc: "L", speed: { min: 115, max: 160 } },
+    { name: "Beech 200 Super King Air", type: "BE20", wtc: "L", speed: { min: 145, max: 250 } },
+    { name: "Socata TBM-700", type: "TBM7", wtc: "L", speed: { min: 115, max: 240 } },
+    { name: "Pilatus PC-12 Eagle", type: "PC12", wtc: "L", speed: { min: 130, max: 210 } },
+    { name: "Robin Cadet", type: "DR40", wtc: "L", speed: { min: 100, max: 140 } },
+    { name: "Beech 33 Debonair", type: "BE33", wtc: "L", speed: { min: 105, max: 160 } },
+    { name: "Diamond DA20 Katana", type: "DV20", wtc: "L", speed: { min: 90, max: 140 } },
+    { name: "Socata TB-21", type: "TB21", wtc: "L", speed: { min: 100, max: 180 } },
+    { name: "Cirrus SR22", type: "SR22", wtc: "L", speed: { min: 90, max: 180 } },
+    { name: "Aquila A 210", type: "A210", wtc: "L", speed: { min: 90, max: 150 } },
+    { name: "Aerospool WT9 Dynamic", type: "WT9", wtc: "L", speed: { min: 60, max: 120 } },
+    { name: "Cessna 152", type: "C152", wtc: "L", speed: { min: 85, max: 100 } }
+]
+
+const ifrList = [
+    { name: "Cessna 402 Businessliner", type: "C402", wtc: "L", speed: { min: 125, max: 220 } },
+    { name: "ATR-72", type: "AT72", wtc: "M", speed: { min: 140, max: 260 } },
+    { name: "De Havilland Canada Dash 8 Q100", type: "DH8A", wtc: "M", speed: { min: 130, max: 250 } },
+    { name: "Cessna 550 Citation", type: "C550", wtc: "L", speed: { min: 145, max: 250 } },
+    { name: "Raytheon 800 XP Hawker", type: "H25B", wtc: "M", speed: { min: 155, max: 290 } },
+    { name: "Learjet 60", type: "LJ60", wtc: "M", speed: { min: 170, max: 290 } },
+    { name: "Bombardier Regional Jet CRJ-900", type: "CRJ9", wtc: "M", speed: { min: 165, max: 290 } },
+    { name: "Embraer ERJ-145", type: "E145", wtc: "M", speed: { min: 165, max: 250 } },
+    { name: "BAE Systems AVRO RJ-100", type: "RJ1H", wtc: "M", speed: { min: 155, max: 250 } },
+    { name: "Boeing 737", type: "B737", wtc: "M", speed: { min: 165, max: 280 } },
+    { name: "Airbus A320", type: "A320", wtc: "M", speed: { min: 175, max: 290 } },
+    { name: "Airbus A340-300", type: "A343", wtc: "H", speed: { min: 175, max: 290 } },
+    { name: "Boeing 777", type: "B773", wtc: "H", speed: { min: 200, max: 300 } },
+    { name: "SAAB 2000", type: "SB20", wtc: "M", speed: { min: 140, max: 340 } },
+    { name: "Fokker 50", type: "F50", wtc: "M", speed: { min: 130, max: 220 } },
+    { name: "ATR-42-500", type: "AT45", wtc: "M", speed: { min: 140, max: 230 } },
+    { name: "British Aerospace Jetstream 32", type: "JS32", wtc: "M", speed: { min: 140, max: 240 } },
+    { name: "Dassault Falcon 2000", type: "F2TH", wtc: "M", speed: { min: 150, max: 290 } },
+    { name: "Dassault Falcon 50", type: "FA50", wtc: "M", speed: { min: 150, max: 290 } },
+    { name: "Fokker F100", type: "F100", wtc: "M", speed: { min: 165, max: 250 } },
+    { name: "Airbus A321", type: "A321", wtc: "M", speed: { min: 175, max: 290 } },
+    { name: "Airbus A319", type: "A319", wtc: "M", speed: { min: 165, max: 290 } },
+    { name: "Airbus A318", type: "A318", wtc: "M", speed: { min: 165, max: 290 } },
+    { name: "Boeing 737-800", type: "B738", wtc: "M", speed: { min: 165, max: 280 } },
+    { name: "Airbus A330-300", type: "A333", wtc: "H", speed: { min: 175, max: 290 } },
+    { name: "Boeing 767-400", type: "B764", wtc: "H", speed: { min: 190, max: 290 } },
+    { name: "Boeing 787-8 Dreamliner", type: "B788", wtc: "H", speed: { min: 190, max: 300 } },
+    { name: "Airbus A350-900", type: "A359", wtc: "H", speed: { min: 220, max: 250 } },
+    { name: "Antonov An-124 Ruslan", type: "A124", wtc: "H", speed: { min: 160, max: 290 } },
+    { name: "Boeing 747-400", type: "B744", wtc: "H", speed: { min: 215, max: 300 } },
+    { name: "Airbus A380-800", type: "A388", wtc: "J", speed: { min: 190, max: 300 } }
+]
+
+const milList = [
+    { name: "General Dynamics F-16 Fighting Falcon", type: "F16", wtc: "M", speed: { min: 175, max: 350 } },
+    { name: "Lockheed Martin F-35 Lightning II", type: "F35", wtc: "M", speed: { min: 190, max: 350 } }
+]
+
+const heliList = [
+    { name: "Robinson R-44", type: "R44", wtc: "L", speed: { min: 60, max: 100 } },
+    { name: "Aerospatiale AS-350 Ecureuil", type: "AS50", wtc: "L", speed: { min: 70, max: 120 } },
+    { name: "Airbus Helicopters H215", type: "AS32", wtc: "M", speed: { min: 80, max: 130 } },
+    { name: "EUROCOPTER EC-135", type: "EC35", wtc: "L", speed: { min: 70, max: 120 } }
+]
+
+
+
+
+
+
+
+
+
+// const scenarios = {
+//     target: {
+//         callsign: "OOABC",
+//         heading: 360,
+//         type: "P28A",
+//         level: 35,
+//         speed: 109
+//     },
+//     intruder: {
+//         callsign: "N331SB",
+//         heading: 75,
+//         type: "C172",
+//         level: 40,
+//         speed: 104
+//     },
+//     situation: {
+//         clock: 11,
+//         distance: 4,
+//         direction: "crossing left to right",
+//         levelDif: "500 feet above"
+//     }
+// }
