@@ -1,16 +1,21 @@
-const targetAircraft = {};
-const intruderAircraft = {};
+const target = {};
+const intruder = {};
+const solution = {};
 
 const isVFR = () => {
-    return Math.random() > 0.8 ? false : true;
+    return Math.random() > 0.75 ? false : true;
 };
 
-const isMIL = () => {
-    return Math.random() > 0.2 ? false : true;
+const isMil = () => {
+    if (target.isVFR) {
+        return Math.random() > 0.10 ? false : true;
+    } else {
+        return false;
+    }
 };
 
 const pickAircraft = () => {
-    if (targetAircraft.isVFR) {
+    if (target.isVFR) {
         const selectVfr = vfrList[Math.floor(Math.random() * vfrList.length)];
         return selectVfr;
     }
@@ -20,20 +25,100 @@ const pickAircraft = () => {
     }
 };
 
-const pickedTarget = pickAircraft();
-const pickedIntruder = pickAircraft();
+const callsign = () => {
+    const getWeightedCharCount = () => {
+        const weights = [
+            { number: 3, weight: 150 },
+            { number: 4, weight: 45 },
+            { number: 2, weight: 20 },
+            { number: 1, weight: 10 }
+        ]
+
+        const cumulativeWeights = []
+
+        for (let i = 0; i < weights.length; i++) {
+            cumulativeWeights[i] = weights[i].weight + (cumulativeWeights[i - 1] || 0);
+        }
+
+        const maxCumulativeWeight = cumulativeWeights[cumulativeWeights.length - 1];
+        const randomNumber = Math.random() * maxCumulativeWeight;
+
+        for (let numberIndex = 0; numberIndex < weights.length; numberIndex++) {
+            if (cumulativeWeights[numberIndex] >= randomNumber) {
+                return weights[numberIndex].number;
+            }
+        }
+    }
+
+    const addSuffix = (c) => {
+        let str = "";
+        str += Math.floor(Math.random() * 10).toString();
+        for (let i = 1; i < c; i++) {
+            if (str[str.length - 1].match(/[A-Z]/) || Math.random() > 0.75) {
+                str = str.concat(String.fromCharCode(65 + Math.floor(Math.random() * 26)));
+            } else {
+                str = str.concat((Math.floor(Math.random() * 10)).toString());
+            }
+        }
+        return str;
+    }
+
+    if (intruder.isVFR && intruder.isMil) {
+        return "military";
+    } else if (target.isVFR) {
+        return "VFR";
+    } else {
+        const airline = airlineCode[Math.floor(Math.random() * airlineCode.length)];
+        const code = airline.icao;
+        const charCount = getWeightedCharCount();
+        const suffix = addSuffix(charCount);
+        return code + suffix;
+    }
+}
 
 const heading = () => {
     return Math.floor(Math.random() * 360 + 1);
 }
 
-targetAircraft.isVFR = isVFR();
-targetAircraft.type = pickedTarget.type;
-targetAircraft.wtc = pickedTarget.name;
-targetAircraft.heading = heading();
+const level = () => {
+    if (target.isVFR) {
+        return Math.floor(Math.random() * 51) + 5;
+    } else {
+        return Math.floor(Math.random() * 91) + 60;
+    }
+}
 
-console.log(targetAircraft);
+const speed = (selected) => {
+    const min = selected.speed.min;
+    const max = selected.speed.max;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
+target.isVFR = isVFR();
+intruder.isVFR = target.isVFR;
+const pickedTarget = pickAircraft();
+const pickedIntruder = pickAircraft();
+
+// Generate Target Aircraft
+target.type = pickedTarget.type;
+target.wtc = pickedTarget.wtc;
+target.callsign = callsign();
+target.heading = heading();
+target.level = level();
+target.speed = speed(pickedTarget);
+
+// Generate Intruder Aircraft
+intruder.isMil = isMil();
+intruder.type = pickedIntruder.type;
+intruder.wtc = pickedIntruder.wtc;
+intruder.callsign = callsign();
+intruder.heading = heading();
+intruder.level = level();
+intruder.speed = speed(pickedIntruder);
+
+
+console.log(target);
+console.log(intruder);
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const startButton = document.querySelector('.btn');
