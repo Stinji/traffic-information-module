@@ -175,7 +175,35 @@ const milCallsign = [
     "BOMR"
 ]
 
-
+const vfrCallsign = [
+    { country: "Belgium", countryCode: "OO", presentation: "PZZ" },
+    { country: "Austria", countryCode: "OE", presentation: "KZZ" },
+    { country: "Bulgaria", countryCode: "LZ", presentation: "ZZZ" },
+    { country: "Czech Republic", countryCode: "OK", presentation: "ZZZ" },
+    { country: "Slovakia", countryCode: "OM", presentation: "ZZZ" },
+    { country: "Estonia", countryCode: "ES", presentation: "ZZZ" },
+    { country: "Isle of Man", countryCode: "M", presentation: "ZZZZ" },
+    { country: "Finland", countryCode: "OH", presentation: "ZZZ" },
+    { country: "Germany", countryCode: "DE", presentation: "ZZZ" },
+    { country: "France", countryCode: "F", presentation: "ZZZZ" },
+    { country: "Italy", countryCode: "I", presentation: "ZZZZ" },
+    { country: "Hungary", countryCode: "HA", presentation: "ZZZ" },
+    { country: "Ireland", countryCode: "IE", presentation: "ZZZ" },
+    { country: "Latvia", countryCode: "YL", presentation: "ZZZ" },
+    { country: "Lithuania", countryCode: "LY", presentation: "ZZZ" },
+    { country: "Luxembourg", countryCode: "LX", presentation: "ZZZ" },
+    { country: "Netherlands", countryCode: "PH", presentation: "ZZZ" },
+    { country: "Norway", countryCode: "LN", presentation: "ZZZ" },
+    { country: "Poland", countryCode: "SP", presentation: "ZZZ" },
+    { country: "Portugal", countryCode: "CR", presentation: "ZZZ" },
+    { country: "Spain", countryCode: "EC", presentation: "WZZ" },
+    { country: "Sweden", countryCode: "SE", presentation: "ZZZ" },
+    { country: "Switzerland", countryCode: "HB", presentation: "ZZZ" },
+    { country: "Serbia", countryCode: "YU", presentation: "ZZZ" },
+    { country: "United Kingdom", countryCode: "G", presentation: "ZZZZ" },
+    { country: "United States", countryCode: "N", presentation: "1AA-999ZZ" },
+    { country: "Denmark", countryCode: "OY", presentation: "ZZZ" }
+]
 
 
 
