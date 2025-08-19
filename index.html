@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="style.css">
-    <script src="data.js"></script>
-    <script src="generation.js"></script>
-    <script src="script.js"></script>
+    <script src="data.js" defer></script>
+    <script src="generation.js" defer></script>
+    <script src="script.js" defer></script>
     <link rel="icon" href="assets/icons/icon-dark.svg" type="image/x-icon" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="assets/icons/icon-light.svg" type="image/x-icon" media="(prefers-color-scheme: light)">
     <title>ATCReady | Traffic Information Module</title>
@@ -18,7 +18,7 @@
 <body>
 
     <!-- Start Screen -->
-    <div class="start-screen">
+    <div id="start-screen" class="start-screen">
         <div class="spacer"></div>
         <img src="./assets/logo/atcready-logo-v2-flat-black-no-margins.svg" alt="ATCReady Logo" class="section logo">
         <div class="spacer"></div>
@@ -46,11 +46,11 @@
             </ol>
         </div>
         <div class="spacer"></div>
-        <button class="section btn">Start First Exercise →</button>
+        <button id="start" class="section btn">Start First Exercise →</button>
     </div>
 
     <!-- Exercise Screen -->
-    <div class="hidden exercise-screen">
+    <div id="exercise-screen" class="hidden exercise-screen">
         <div class="top">
             <h1>Traffic Information</h1>
             <div class="progress">
@@ -62,8 +62,32 @@
             </div>
         </div>
         <div class="radar-container">
-            <div class="objective"><p>Give traffic information to XXXXX</p></div>
-            <div class="radar-screen"><svg width="100%" height="100%" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="objective">
+                <p>Give traffic information to XXXXX</p>
+            </div>
+            <div class="radar-screen">
+                <svg id="drawing" height="400" width="400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Radar -->
+                    <circle id="radar-background" r="200" cx="200" cy="200" fill="#1F1F1F" /> <!-- radar background -->
+                    <line id="radar-crosshair-ltr" x1="200" y1="0" x2="200" y2="400" style="stroke:#404040;" /> <!-- crosshair -->
+                    <line id="radar-crosshair-rtl" x1="0" y1="200" x2="400" y2="200" style="stroke:#404040;" /> <!-- crosshair -->
+                    <circle id="radar-3nm" r="50" cx="200" cy="200" fill="none" stroke="#404040" /> <!-- 3NM -->
+                    <circle id="radar-6nm" r="100" cx="200" cy="200" fill="none" stroke="#404040" /> <!-- 6NM -->
+                    <circle id="radar-9nm" r="150" cx="200" cy="200" fill="none" stroke="#404040" /> <!-- 9NM -->
+                    <text id="radar-3nm-text" x="240" y="245" fill="#797979" font-size="10px">3NM</text> <!-- 3NM text -->
+                    <text id="radar-6nm-text" x="275.5" y="280.5" fill="#797979" font-size="10px">6NM</text> <!-- 6NM text -->
+                    <text id="radar-9nm-text" x="311" y="316" fill="#797979" font-size="10px">9NM</text> <!-- 9NM text -->
+
+                    <!-- Target -->
+                    <rect id="target-square" width="10" height="10" x="0" y="0" fill="#FFF" /> <!-- square -->
+                    <line id="target-leaderline" x1="0" y1="0" x2="0" y2="0" style="stroke:#FFF;" /> <!-- leader line -->
+
+                    <!-- Intruder -->
+                    <rect id="intruder-square" width="10" height="10" x="0" y="0" fill="#FFF" /> <!-- square -->
+                    <line id="intruder-leaderline" x1="0" y1="0" x2="0" y2="0" style="stroke:#FFF;" /> <!-- leader line -->
+                    Sorry, your browser does not support inline SVG.
+                </svg>
+                <!-- <svg width="100%" height="100%" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="300" height="300" rx="150" fill="#1F1F1F"/>
                 <line x1="150" x2="150" y2="300" stroke="#404040"/>
                 <line x1="300" y1="150" x2="-3.51566e-08" y2="150" stroke="#404040"/>
@@ -79,8 +103,8 @@
                 <path d="M234.365 232.602C234.624 232.604 234.88 232.652 235.132 232.744C235.384 232.837 235.611 232.989 235.813 233.199C236.018 233.409 236.181 233.693 236.302 234.051C236.425 234.407 236.488 234.85 236.49 235.381C236.49 235.89 236.438 236.344 236.336 236.741C236.234 237.137 236.087 237.472 235.896 237.744C235.706 238.017 235.476 238.224 235.206 238.366C234.935 238.509 234.63 238.58 234.291 238.58C233.944 238.58 233.636 238.511 233.367 238.375C233.099 238.239 232.88 238.05 232.711 237.81C232.543 237.567 232.438 237.289 232.396 236.974H233.262C233.319 237.224 233.435 237.427 233.609 237.582C233.785 237.736 234.012 237.813 234.291 237.813C234.717 237.813 235.049 237.627 235.288 237.256C235.527 236.883 235.647 236.362 235.649 235.693H235.603C235.505 235.856 235.382 235.996 235.234 236.114C235.088 236.231 234.924 236.322 234.742 236.386C234.561 236.451 234.367 236.483 234.16 236.483C233.825 236.483 233.52 236.401 233.245 236.236C232.971 236.071 232.752 235.845 232.589 235.557C232.426 235.269 232.345 234.94 232.345 234.571C232.345 234.204 232.428 233.87 232.595 233.571C232.763 233.272 232.998 233.035 233.299 232.861C233.602 232.685 233.957 232.598 234.365 232.602ZM234.367 233.341C234.146 233.341 233.946 233.396 233.768 233.506C233.592 233.614 233.453 233.76 233.35 233.946C233.248 234.13 233.197 234.334 233.197 234.56C233.197 234.785 233.246 234.99 233.345 235.173C233.445 235.355 233.581 235.5 233.754 235.608C233.928 235.714 234.127 235.767 234.35 235.767C234.517 235.767 234.672 235.735 234.816 235.67C234.96 235.606 235.086 235.517 235.194 235.403C235.302 235.288 235.386 235.157 235.447 235.011C235.508 234.866 235.538 234.712 235.538 234.551C235.538 234.337 235.487 234.138 235.384 233.955C235.284 233.771 235.146 233.623 234.97 233.511C234.794 233.398 234.593 233.341 234.367 233.341Z" fill="#797979"/>
                 <path d="M242.394 232.682V238.5H241.587L238.63 234.233H238.576V238.5H237.698V232.682H238.51L241.47 236.955H241.524V232.682H242.394Z" fill="#797979"/>
                 <path d="M243.674 232.682H244.74L246.592 237.205H246.66L248.512 232.682H249.578V238.5H248.742V234.29H248.688L246.973 238.491H246.279L244.563 234.287H244.509V238.5H243.674V232.682Z" fill="#797979"/>
-                </svg>
-                </div>
+                </svg> -->
+            </div>
             <button class="answer">Show Answer</button>
             <button class="next-scenario">Next Scenario</button>
         </div>

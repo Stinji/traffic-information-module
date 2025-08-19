@@ -107,7 +107,7 @@ const callsign = () => {
 }
 
 const heading = () => {
-    return Math.floor(Math.random() * 360 + 1);
+    return Math.round(Math.floor(Math.random() * 360 + 1) / 5) * 5;
 }
 
 const level = () => {
@@ -155,14 +155,12 @@ const speed = (selected) => {
 
 const clock = () => {
     const randomClock = Math.floor(Math.random() * 12) + 1;
-    const clockStr = randomClock + " o'clock";
-    return clockStr;
+    return randomClock;
 }
 
 const distance = () => {
     const randomDistance = Math.floor(Math.random() * 8) + 2;
-    const distanceStr = randomDistance + " miles";
-    return distanceStr;
+    return randomDistance;
 }
 
 const direction = () => {
@@ -226,8 +224,8 @@ const createSolution = () => {
     let str = "";
     str += solution.callsign + ", ";
     str += "Traffic, ";
-    str += solution.clock + ", ";
-    str += solution.distance + ", ";
+    str += solution.clock + " o'clock, ";
+    str += solution.distance + " miles, ";
     // Str += solution.direction + ", ";
     str += solution.level + ", ";
     str += solution.type;
