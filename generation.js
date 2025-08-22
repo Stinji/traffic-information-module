@@ -1,3 +1,7 @@
+const target = {};
+const intruder = {};
+const solution = {};
+
 function startGeneration() {
 
     // HELPER FUNCTIONS
@@ -28,9 +32,6 @@ function startGeneration() {
     }
 
     // GENERATION
-    const target = {};
-    const intruder = {};
-    const solution = {};
 
     const isVFR = () => {
         return Math.random() > 0.75 ? false : true;
@@ -194,14 +195,14 @@ function startGeneration() {
     }
 
     const distance = () => {
-        const randomDistance = Math.floor(Math.random() * 8) + 2;
+        const randomDistance = Math.floor(Math.random() * 5) + 3;
         return randomDistance;
     }
 
-    const direction = () => { // TO DO!
+    const direction = () => {
         const weights = [
             { selection: "crossing right to left", weight: 50 },
-            { selection: "crossing left to right", weight: 50 },
+            { selection: "crossing left to right", weight: 11150 },
             { selection: "converging", weight: 50 },
             { selection: "opposite direction", weight: 20 },
             { selection: "overtaking", weight: 5 }
@@ -269,7 +270,7 @@ function startGeneration() {
 
     generateEverything();
 
-    const createSolution = () => {
+    const createSolutionPhrase = () => {
         let str = "";
         str += solution.callsign + ", ";
         str += "Traffic, ";
@@ -282,7 +283,7 @@ function startGeneration() {
         return str;
     }
 
-    const solutionPhrase = createSolution();
+    const solutionPhrase = createSolutionPhrase();
 
     console.log(target);
     console.log(intruder);
